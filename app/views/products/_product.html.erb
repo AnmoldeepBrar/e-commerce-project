@@ -1,0 +1,16 @@
+<article class="product">
+  <header>
+    <%= link_to product do %>
+      <h4><%= product.name %></h4>
+    <% end %>
+  </header>
+  <p class="description">
+    <%= product.description %>
+  </p>
+  <footer class="actions">
+  </footer>
+
+  <aside class="price">
+    <%= product.price %>
+  </aside>
+</article>

@@ -1,0 +1,25 @@
+<section class="sessions-show">
+  <header class="page-header">
+    <h1>
+      Login
+    </h1>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          <br>
+          <br>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          <br>
+          <br>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <%= render "devise/shared/links" %>
+  </div>
+</section>
+

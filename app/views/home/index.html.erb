@@ -1,0 +1,30 @@
+<h1>All Products</h1>
+
+<div class="products">
+  <% @products.each do |product| %>
+    <%= render partial: 'products/product', locals: { product: product } %>
+  <% end %>
+  <%= paginate @products %>
+</div>
+
+<h2>Products on Sale</h2>
+
+<% @products_on_sale.each do |product| %>
+  <div>
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <p>Price: <%= number_to_currency(product.price) %></p>
+  </div>
+<% end %>
+
+<hr>
+
+<h2>Recently Updated Products</h2>
+
+<% @recently_updated_products.each do |product| %>
+  <div>
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <p>Price: <%= number_to_currency(product.price) %></p>
+  </div>
+<% end %>
