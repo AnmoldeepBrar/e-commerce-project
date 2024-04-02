@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  root 'home#index'
+  root 'products#index'
   resources :products
   resources :products, only: [:show]
   resources :products, only: [:index]
