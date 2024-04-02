@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products do
+    collection do
+      get :search
+    end
+  end
+
   get 'about_us', to: 'about_pages#show', as: 'about_us'
   get 'contact_us', to: 'contact_pages#show', as: 'contact_us'
   get '/categories/:category_id', to: 'products#show_by_category', as: 'products_by_category'

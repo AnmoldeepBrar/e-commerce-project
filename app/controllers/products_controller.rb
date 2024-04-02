@@ -7,13 +7,14 @@ def product_params
 
   def index
     @products = Product.all
-
+    @categories = Category.all
+  
+  
     respond_to do |format|
       format.html # Render HTML by default (using index.html.erb)
       format.json { render json: @products } # Render JSON for API requests
     end
   end
-
 
   def show
     @product = Product.find(params[:id])
