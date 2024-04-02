@@ -37,6 +37,7 @@
 <% @products_on_sale.each do |product| %>
   <div>
     <h3><%= product.name %></h3>
+    <%= image_tag(product.image.url, class: "product-image") if product.image.present? %>
     <p><%= product.description %></p>
     <p>Price: <%= number_to_currency(product.price) %></p>
   </div>
@@ -49,6 +50,7 @@
 <% @recently_updated_products.each do |product| %>
   <div>
     <h3><%= product.name %></h3>
+    <%= image_tag(product.image.url, class: "product-image") if product.image.present? %>
     <p><%= product.description %></p>
     <p>Price: <%= number_to_currency(product.price) %></p>
   </div>
