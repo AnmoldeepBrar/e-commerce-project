@@ -1,5 +1,5 @@
 <h2>Search Products</h2>
-<%= form_tag(search_products_path, method: :get) do %>
+<%= form_tag(products_path, method: :get) do %>
   <div class="form-group">
     <%= select_tag(:category_id, options_for_select(@categories.map { |c| [c.name, c.id] }), include_blank: true, class: 'form-control') %>
   </div>
@@ -9,19 +9,6 @@
   <%= submit_tag('Search', class: 'btn btn-primary') %>
 <% end %>
 
-<% if @products.present? %>
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-md-4">
-        <h2><%= product.name %></h2>
-        <p>Description: <%= product.description %></p>
-        <p><%= product.price %></p>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>No products found.</p>
-<% end %>
 
 <h1>All Products</h1>
 
@@ -37,7 +24,6 @@
 <% @products_on_sale.each do |product| %>
   <div>
     <h3><%= product.name %></h3>
-    <%= image_tag(product.image.url, class: "product-image") if product.image.present? %>
     <p><%= product.description %></p>
     <p>Price: <%= number_to_currency(product.price) %></p>
   </div>
@@ -50,7 +36,6 @@
 <% @recently_updated_products.each do |product| %>
   <div>
     <h3><%= product.name %></h3>
-    <%= image_tag(product.image.url, class: "product-image") if product.image.present? %>
     <p><%= product.description %></p>
     <p>Price: <%= number_to_currency(product.price) %></p>
   </div>

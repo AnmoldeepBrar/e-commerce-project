@@ -6,13 +6,21 @@ class Product < ApplicationRecord
   attribute :on_sale, :boolean, default: false
   attribute :new, :boolean, default: false
 
-  scope :search_by_keyword, ->(keyword) {
-    where("title LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%")
+  # scope :search_by_keyword, ->(keyword) {
+  #   where("title LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%")
+  # }
+
+  # scope :in_category, ->(category_id) {
+  #   where(category_id: category_id)
+  # }
+
+  scope :search, ->(query) {
+    joins(:category).where("products.name LIKE :query OR categories.name LIKE :query", query: "%#{query}%")
   }
 
-  scope :in_category, ->(category_id) {
-    where(category_id: category_id)
-  }
+  def self.search_by_keyword(keyword)
+    where("name LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%")
+  end
   
   # Define ransackable_associations method to specify associations that Ransack can search on
   def self.ransackable_associations(auth_object = nil)

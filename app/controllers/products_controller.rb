@@ -1,23 +1,11 @@
-# app/controllers/products_controller.rb
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
-def product_params
+
+  def product_params
     params.require(:product).permit(:name, :description, :price, category_ids: [])
   end
 
-  # def index
-  #   @products = Product.all
-  #   @categories = Category.all
-  
-  
-  #   respond_to do |format|
-  #     format.html # Render HTML by default (using index.html.erb)
-  #     format.json { render json: @products } # Render JSON for API requests
-  #   end
-  # end
-
   def index
-    #@products = Product.all  # Retrieve all products (you might want to limit or filter this based on your requirements)
     @products = Product.all.page(params[:page]).per(10)
     @categories = Category.all
 
@@ -25,11 +13,15 @@ def product_params
     @recently_updated_products = Product.order(updated_at: :desc).limit(3)
 
     if params[:category_id].present?
-      @products = @products.in_category(params[:category_id])
+      @products = @products.where(category_id: params[:category_id])
     end
   
     if params[:keyword].present?
       @products = @products.search_by_keyword(params[:keyword])
+    end
+
+    if params[:q].present?
+      @products = @products.search(params[:q])
     end
   
     respond_to do |format|
@@ -38,13 +30,12 @@ def product_params
     end
   end
 
-  def search
-    redirect_to products_path(keyword: params[:keyword], category_id: params[:category_id])
-  end
-
+  # def search
+  #   redirect_to products_path(keyword: params[:keyword], category_id: params[:category_id])
+  # end
 
   def show
-    @product = Product.find(params[:id])
+    # @product is already set by the before_action :set_product
   end
 
   def show_by_category
@@ -61,6 +52,8 @@ def product_params
     @products = Product.order(updated_at: :desc).limit(3) # Fetch 10 most recently updated products
     render :index # Render the index template for recently updated products
   end
+
+  private
 
   def set_product
     @product = Product.find(params[:id])

@@ -6,6 +6,8 @@ ActiveAdmin.register Product do
 
   #remove_filter 'avatar_attachment'
   #remove_filter 'avatar_blob'
+  filter :name_cont, label: 'Name' # Adds a text-based search filter for the 'name' attribute
+  filter :category, as: :select, collection: proc { Category.pluck(:name, :id) }, label: 'Category' # Adds a dropdown filter for selecting categories
   filter :on_sale, label: 'On Sale'
 
     index do
