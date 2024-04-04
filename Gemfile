@@ -95,3 +95,5 @@ gem "carrierwave", "~> 3.0"
 gem "mini_magick", "~> 4.12"
 
 gem "rolify", "~> 6.0"
+
+gem "breadcrumbs_on_rails", "~> 4.1"

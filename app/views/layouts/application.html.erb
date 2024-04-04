@@ -20,7 +20,7 @@
   <%= link_to 'About Us', about_us_path %>
   <%= link_to 'Contact Us', contact_us_path %>
   <% Category.all.each do |category| %>
-    <%= link_to category.name, products_by_category_path(category) %>
+    <%= link_to category.name, category_products_path(category) %>
   <% end %>
   <% if customer_signed_in? %>
   <li><%= link_to 'Logout', destroy_customer_session_path, method: :delete %></li>
@@ -28,6 +28,11 @@
   <li><%= link_to 'Login', new_customer_session_path %></li>
   <li><%= link_to 'Register', new_customer_registration_path %></li>
 <% end %>
+</nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs(separator: ' / ') %>
+  </ol>
 </nav>
     <%= yield %>
   </body>

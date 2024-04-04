@@ -99,6 +99,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.2.4)
     cancancan (3.5.0)
     capybara (3.40.0)
@@ -365,6 +367,7 @@ DEPENDENCIES
   activeadmin (~> 3.2)
   bcrypt (~> 3.1.7)
   bootsnap
+  breadcrumbs_on_rails (~> 4.1)
   cancancan (~> 3.5)
   capybara
   carrierwave (~> 3.0)

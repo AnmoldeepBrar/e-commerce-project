@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   end
   resources :categories
 
+  resources :categories, only: [:show] do
+    get 'products', to: 'products#show_by_category'
+  end
+
   resources :products do
     collection do
       get :search
@@ -36,6 +40,7 @@ Rails.application.routes.draw do
 
   get 'about_us', to: 'about_pages#show', as: 'about_us'
   get 'contact_us', to: 'contact_pages#show', as: 'contact_us'
+  get '/products/list', to: 'products#list', as: 'list_products'
   get '/categories/:category_id', to: 'products#show_by_category', as: 'products_by_category'
   get '/sale', to: 'products#index', sale: true
   get '/recent_updates', to: 'products#index', recent_updates: true

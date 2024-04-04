@@ -1,13 +1,18 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
+  add_breadcrumb "Home", :root_path
+
   def product_params
     params.require(:product).permit(:name, :description, :price, category_ids: [])
   end
 
   def index
+    add_breadcrumb "Categories", categories_path
+    add_breadcrumb "Products", list_products_path
     @products = Product.all.page(params[:page]).per(10)
     @categories = Category.all
+    #add_breadcrumb "All Products", products_path
 
     @products_on_sale = Product.where(on_sale: true)
     @recently_updated_products = Product.order(updated_at: :desc).limit(3)
@@ -30,12 +35,24 @@ class ProductsController < ApplicationController
     end
   end
 
-  # def search
-  #   redirect_to products_path(keyword: params[:keyword], category_id: params[:category_id])
-  # end
+  def search
+    redirect_to products_path(keyword: params[:keyword], category_id: params[:category_id])
+  end
 
   def show
     # @product is already set by the before_action :set_product
+    #@product = Product.find(params[:id])
+    #add_breadcrumb "Product Details", product_path(@product)
+    if @product
+      add_breadcrumb "Product Details", product_path(@product)
+    else
+      flash[:alert] = "Product not found"
+      redirect_to products_path
+    end
+  end
+
+  def list
+    @products = Product.all.page(params[:page]).per(10)
   end
 
   def show_by_category
@@ -57,5 +74,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+   
   end
 end
