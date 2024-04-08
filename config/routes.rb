@@ -46,7 +46,24 @@ Rails.application.routes.draw do
   get '/recent_updates', to: 'products#index', recent_updates: true
   get 'products/sale', to: 'products#sale', as: :sale_products
   get 'products/recent_updates', to: 'products#recent_updates', as: :recent_updates_products
-\
+ 
+  # resource :cart, only: [:show, :update, :destroy]
+
+  # resources :products do
+  #   member do
+  #     post 'add_to_cart'
+  #   end
+  # end
+
+  # resources :products do
+  #   post :add_to_cart, on: :member
+  # end
+
+  resource :cart, only: [:show] do
+    put    :add_item
+    delete :remove_item
+    delete :remove_product
+  end
 
   # Your other routes go here
   #resources :contact_pages, only: [:show]

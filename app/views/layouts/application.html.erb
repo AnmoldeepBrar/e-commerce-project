@@ -28,6 +28,9 @@
   <li><%= link_to 'Login', new_customer_session_path %></li>
   <li><%= link_to 'Register', new_customer_registration_path %></li>
 <% end %>
+<%= link_to cart_path do %>
+  <span class="glyphicon glyphicon-shopping-cart shopping-cart"></span> My Cart (<%= cart.size %>)
+<% end %>
 </nav>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
