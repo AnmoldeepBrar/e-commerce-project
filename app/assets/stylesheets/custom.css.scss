@@ -1,0 +1,14 @@
+/* app/assets/stylesheets/custom.css.scss */
+
+.product-image {
+    width: 200px; /* Adjust this value according to your preference */
+    height: 200px; /* Adjust this value according to your preference */
+    object-fit: cover; /* Ensures the image covers the entire container */
+  }
+  
+  .image-container {
+    width: 200px; /* Same width as the image */
+    height: 200px; /* Same height as the image */
+    overflow: hidden; /* Hides any overflow beyond the container */
+  }
+  

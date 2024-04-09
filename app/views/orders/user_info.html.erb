@@ -1,0 +1,34 @@
+<section class="sessions-show">
+  <header class="page-header">
+    <h1>
+      Order Information
+    </h1>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= form_for(Customer.new, url: "/customers/sign_in", html: { method: :post }) do |f| %>
+          <label>Email</label>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          <br>
+          <br>
+          <%= f.hidden_field :password, value: "123456" %>
+          <label>Address</label>
+          <%= f.text_field :address, class: "form-control" %>
+          <br>
+          <br>
+          <label>Province</label>
+          <%= f.text_field :province, class: "form-control" %>
+          <br>
+          <br>
+          # <h6>TAX: 16% ---------- Total after Tax: <%= (@cart_total + (16/@cart_total*100).to_f.round(2))  %></h6>
+          <br>
+          <br>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  </div>
+</section>
+

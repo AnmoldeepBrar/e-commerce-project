@@ -1,0 +1,24 @@
+<% @order.order_items.each do |i| %>
+
+  <tr>
+    <td>
+      <% if i&.product&.image&.url&.present? %>
+        <%= image_tag i&.product&.image&.url %>
+      <% else %>
+        <%= image_tag "shirt.png" %>
+      <% end %>
+    </td>
+    <td>
+      <h4><%= i.product.name %></h4>
+      <br>
+      <p><%= i.product.description %></p>
+    </td>
+    <td>
+      <%= i.quantity %>
+    </td>
+    <td>
+      <%= i.total_price %>
+    </td>
+  </tr>
+
+<% end %>

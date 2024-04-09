@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_30_052941) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_181607) do
   create_table "about_pages", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
@@ -99,6 +99,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_30_052941) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "province"
+    t.string "name"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -109,6 +112,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_30_052941) do
     t.index ["customer_id", "role_id"], name: "index_customers_roles_on_customer_id_and_role_id"
     t.index ["customer_id"], name: "index_customers_roles_on_customer_id"
     t.index ["role_id"], name: "index_customers_roles_on_role_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

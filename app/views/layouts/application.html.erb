@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'custom' %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -22,12 +23,22 @@
   <% Category.all.each do |category| %>
     <%= link_to category.name, category_products_path(category) %>
   <% end %>
-  <% if customer_signed_in? %>
-  <li><%= link_to 'Logout', destroy_customer_session_path, method: :delete %></li>
-<% else %>
-  <li><%= link_to 'Login', new_customer_session_path %></li>
-  <li><%= link_to 'Register', new_customer_registration_path %></li>
-<% end %>
+<% if customer_signed_in? %>
+<li><a href="#">Signed in as <%= current_user.present? && current_user.name.present? ? current_user.name : "Customer"  %></a></li> 
+          <li>
+          <%= link_to destroy_customer_session_path, data: { "turbo-method": :delete } do %>
+            Logout
+          <% end %>
+            <li>
+            <%= link_to edit_customer_registration_path, data: { "turbo-method": :get } do %>
+              Edit
+            <% end %>
+            </li>
+          </li>
+          <% else %>
+          <li><%= link_to 'Login', new_customer_session_path %></li>
+          <li><%= link_to 'Register', new_customer_registration_path %></li>
+          <% end %>
 <%= link_to cart_path do %>
   <span class="glyphicon glyphicon-shopping-cart shopping-cart"></span> My Cart (<%= cart.size %>)
 <% end %>

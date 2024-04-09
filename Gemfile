@@ -97,3 +97,5 @@ gem "mini_magick", "~> 4.12"
 gem "rolify", "~> 6.0"
 
 gem "breadcrumbs_on_rails", "~> 4.1"
+
+gem "stripe", "~> 10.14"

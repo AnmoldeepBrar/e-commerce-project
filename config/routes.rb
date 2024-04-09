@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  #devise_for :customers
-  devise_for :customers, controllers: { sessions: 'sessions', registrations: 'users/registrations' }
+  devise_for :customers, controllers: { sessions: 'devise/sessions', registrations: 'users/registrations' }
 
   namespace :admin do
     resources :products
@@ -38,6 +37,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, only: [:create, :show]
+
   get 'about_us', to: 'about_pages#show', as: 'about_us'
   get 'contact_us', to: 'contact_pages#show', as: 'contact_us'
   get '/products/list', to: 'products#list', as: 'list_products'
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   get '/recent_updates', to: 'products#index', recent_updates: true
   get 'products/sale', to: 'products#sale', as: :sale_products
   get 'products/recent_updates', to: 'products#recent_updates', as: :recent_updates_products
+  get 'user_info', to: 'orders#user_info', as: "user_info"
  
   # resource :cart, only: [:show, :update, :destroy]
 
