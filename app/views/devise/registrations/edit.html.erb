@@ -12,10 +12,10 @@
     <%= f.label :address %><br />
     <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
   </div>
-  <div class="field">
-  <%= f.label :province %><br />
+<div class="field">
+  <%= f.label :province_id %><br />
   <%= f.collection_select :province_id, Province.all, :id, :name, prompt: "Select Province" %>
-</div>
+</div
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
