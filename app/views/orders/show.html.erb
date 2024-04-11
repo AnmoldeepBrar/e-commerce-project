@@ -52,7 +52,7 @@
       GST:
     </th>
     <th>
-      $<%= (12/@order.total_amount*100).to_f.round(2) %>
+      $<%= (@order.total_amount*100).to_f.round(2) %>
     </th>
   </tr>
       <tr>
@@ -68,7 +68,7 @@
         After Tax GRAND TOTAL:
       </th>
       <th>
-        $<%= (@order.total_amount - (12/@order.total_amount*100).to_f - (5/@order.total_amount*100).to_f).round(2) %>
+        $<%= (@order.total_amount ) + (5/@order.total_amount*100).to_f.round(2) + (12/@order.total_amount*100).to_f.round(2)  %>
       </th>
     </tr>
       </tfoot>

@@ -51,7 +51,7 @@
             data-amount="<%= @cart_total.to_i * 100 %>"
             data-name="Trendz"
             data-locale="auto"
-            data-email="<%= current_user&.email %>"
+            data-email="<%= current_customer&.email %>"
             data-currency="usd">
           </script>
         <% end %>

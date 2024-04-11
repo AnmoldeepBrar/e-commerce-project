@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
   rolify
+  belongs_to :province
 
     # Add address attribute
     attr_accessor :address

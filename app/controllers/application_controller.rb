@@ -2,9 +2,15 @@ class ApplicationController < ActionController::Base
     include Devise::Controllers::Helpers
     helper_method :current_user
     helper_method :cart
+    #before_action :authenticate_customer!
+
     def current_user
-      @current_user ||= Customer.find(session[:user_id]) if session[:user_id]
+      @current_user ||= current_customer
     end
+
+    # def current_user
+    #   @current_user ||= Customer.find(session[:user_id]) if session[:user_id]
+    # end
   
     private
   
