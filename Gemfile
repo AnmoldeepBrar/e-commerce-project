@@ -99,3 +99,7 @@ gem "rolify", "~> 6.0"
 gem "breadcrumbs_on_rails", "~> 4.1"
 
 gem "stripe", "~> 10.14"
+
+gem "rubocop", "~> 1.63"
+
+gem "rubocop-rails", "~> 2.24"
