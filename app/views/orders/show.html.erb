@@ -1,5 +1,4 @@
 <section class="orders-show">
-
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
@@ -33,21 +32,36 @@
           <th colspan="3">Province:</th>
           <th><%= @order.customer.province.name %></th>
         </tr>
-        <tr>
-          <th colspan="3">PST:</th>
-          <th>$<%= (@order.total_amount * @order.customer.province.pst).round(2) %></th>
-        </tr>
-        <tr>
-          <th colspan="3">GST:</th>
-          <th>$<%= (@order.total_amount * @order.customer.province.gst_hst).round(2) %></th>
-        </tr>
+        <% if @order.customer.province.gst.present? %>
+          <tr>
+            <th colspan="3">GST:</th>
+            <th>$<%= (@order.total_amount * @order.customer.province.gst).round(2) %></th>
+          </tr>
+        <% end %>
+        <% if @order.customer.province.pst.present? %>
+          <tr>
+            <th colspan="3">PST:</th>
+            <th>$<%= (@order.total_amount * @order.customer.province.pst).round(2) %></th>
+          </tr>
+        <% end %>
+        <% if @order.customer.province.hst.present? %>
+          <tr>
+            <th colspan="3">HST:</th>
+            <th>$<%= (@order.total_amount * @order.customer.province.hst).round(2) %></th>
+          </tr>
+        <% end %>
         <tr>
           <th colspan="3">GRAND TOTAL:</th>
           <th>$<%= @order.total_amount %></th>
         </tr>
         <tr>
-          <th colspan="3">After Tax GRAND TOTAL:</th>
-          <th>$<%= (@order.total_amount + (@order.total_amount * @order.customer.province.pst) + (@order.total_amount * @order.customer.province.gst_hst)).round(2) %></th>
+        <th colspan="3">After Tax GRAND TOTAL:</th>
+        <th>$<%= (
+          @order.total_amount +
+          (@order.total_amount * (@order.customer.province.pst || 0)) +
+          (@order.total_amount * (@order.customer.province.gst || 0)) +
+          (@order.total_amount * (@order.customer.province.hst || 0))
+        ).round(2) %></th>
         </tr>
       </tfoot>
     </table>
