@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   #has_one_attached :image
   belongs_to :category
   mount_uploader :image, ImageUploader
-
+  has_many :orders, through: :order_items
   attribute :on_sale, :boolean, default: false
   attribute :new, :boolean, default: false
 
