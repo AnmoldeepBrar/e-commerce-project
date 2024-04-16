@@ -6,6 +6,9 @@ class Product < ApplicationRecord
   attribute :on_sale, :boolean, default: false
   attribute :new, :boolean, default: false
 
+  validates :name, :description, :price, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+
   # scope :search_by_keyword, ->(keyword) {
   #   where("title LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%")
   # }

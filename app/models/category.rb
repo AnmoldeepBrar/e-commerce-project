@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
     has_many :products
-
+    
+    validates :name, presence: true
     def self.ransackable_attributes(auth_object = nil)
       ["created_at", "description", "id", "name", "updated_at"]
       # Add any additional attributes here that you want to be searchable
