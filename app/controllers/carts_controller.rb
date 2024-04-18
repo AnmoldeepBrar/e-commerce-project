@@ -1,22 +1,3 @@
-# class CartsController < ApplicationController
-#     def show
-#         @cart = session[:cart] || {}
-#       end
-    
-#       def update
-#         session[:cart] ||= {}
-#         product_id = params[:product_id]
-#         quantity = params[:quantity].to_i
-#         session[:cart][product_id] ||= 0
-#         session[:cart][product_id] += quantity
-#         redirect_to cart_path
-#       end
-    
-#       def destroy
-#         session[:cart] = nil
-#         redirect_to cart_path
-#       end
-# end
 class CartsController < ApplicationController
 
     def add_item
@@ -58,14 +39,29 @@ class CartsController < ApplicationController
       redirect_to cart_path
     end
 
-    def remove_product
-      product_id = params[:product_id].to_s
+  #   def remove_product
+  #     product_id = params[:product_id].to_s
       
-      cart.delete(product_id)
-      update_cart cart
-      flash[:remove] = "Product successfully removed from the cart."
+  #     cart.delete(product_id)
+  #     update_cart cart
+  #     flash[:remove] = "Product successfully removed from the cart."
       
-      redirect_to cart_path
+  #     redirect_to cart_path
+  # end
+
+  def remove_product
+    product_id = params[:product_id].to_s
+    
+    cart.delete(product_id)
+    update_cart(cart)
+    
+    if cart.empty?
+      flash[:notice] = "Product successfully removed from the cart."
+    else
+      flash[:notice] = "Product successfully removed from the cart."
+    end
+    
+    redirect_to cart_path
   end
       
   # def remove_product
