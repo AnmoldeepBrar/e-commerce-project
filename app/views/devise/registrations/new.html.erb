@@ -12,6 +12,12 @@
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, class: "form-control" %>
           <br>
+          <%= f.label :address %><br />
+          <%= f.text_field :address, autofocus: true, class: "form-control" %>
+          <br>
+        <%= f.label :province_id %><br />
+        <%= f.collection_select :province_id, Province.all, :id, :name, prompt: "Select Province", class: "form-control" %>
+        <br>
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
