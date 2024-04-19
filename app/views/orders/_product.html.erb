@@ -3,7 +3,7 @@
   <tr>
     <td>
       <% if i&.product&.image&.url&.present? %>
-        <%= image_tag i&.product&.image&.url %>
+        <%= image_tag i&.product&.image&.url(:thumb)%>
       <% else %>
         <%= image_tag "shirt.png" %>
       <% end %>
