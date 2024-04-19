@@ -6,7 +6,7 @@ ActiveAdmin.register_page "Customer Orders" do
       Customer.includes(:orders).each do |customer|
         panel "#{customer.name}'s Orders" do
           table_for customer.orders do
-            # Customer ID and Email
+            
             column "Customer ID" do |order|
               order.customer.id
             end
