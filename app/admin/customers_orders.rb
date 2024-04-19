@@ -2,7 +2,7 @@ ActiveAdmin.register_page "Customer Orders" do
     menu priority: 1
     
     content title: "Customers with Orders" do
-      # Loop through each customer
+      
       Customer.includes(:orders).each do |customer|
         panel "#{customer.name}'s Orders" do
           table_for customer.orders do
