@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def list
-    @products = Product.all.page(params[:page]).per(10)
+    @products = Product.all.page(params[:page]).per(9)
   end
 
   def show_by_category

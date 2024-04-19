@@ -2,7 +2,7 @@ ActiveAdmin.register_page "Customer Orders" do
     menu priority: 1
     
     content title: "Customers with Orders" do
-      
+        
       Customer.includes(:orders).each do |customer|
         panel "#{customer.name}'s Orders" do
           table_for customer.orders do
@@ -17,10 +17,10 @@ ActiveAdmin.register_page "Customer Orders" do
             column "Order ID", :id
             
             column "Products" do |order|
-              order.order_items.map { |item| item.product.name }.join(", ")
+              order.order_items.map(&:product).map(&:name).join(", ")
             end
             column "Quantity" do |order|
-              order.order_items.map { |item| item.quantity }.join(", ")
+              order.order_items.map(&:quantity).join(", ")
             end
             
             column "Address" do |order|
@@ -54,5 +54,5 @@ ActiveAdmin.register_page "Customer Orders" do
         end
       end
     end
-  end
+end
   

@@ -1,6 +1,12 @@
-<h1>Products in <%= @category.name %> Category</h1>
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
+<div style="border: 2px black; padding: 20px;">
+  <h1 style="color: black; font-size: 24px;">Products in <%= @category.name %> Category</h1>
+  <ul style="list-style-type: none; padding: 0;">
+    <% @products.each do |product| %>
+      <li style="margin-bottom: 10px;">
+        <div style="background-color: brown; padding: 5px; border-radius: 5px;">
+          <%= link_to product.name, product_path(product), style: "color: white; text-decoration: none; font-weight: bold;" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
