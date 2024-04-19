@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Customer Orders" do
             end
             
             column "Order ID", :id
-            # Products and Quantity
+            
             column "Products" do |order|
               order.order_items.map { |item| item.product.name }.join(", ")
             end
