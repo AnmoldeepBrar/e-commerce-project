@@ -107,4 +107,3 @@ gem "rubocop-rails", "~> 2.24"
 gem "bootstrap", "~> 5.3"
 
 gem 'mini_racer'
-

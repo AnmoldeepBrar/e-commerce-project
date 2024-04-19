@@ -6,7 +6,7 @@
 
   <tr>
     <td>
-      <%= image_tag(product.image.url, class: "product-image") if product.image.present? %>
+      <%= image_tag(product.image.url, alt: product.name, class: "product-image") if product.image.present? %>
     </td>
     <td>
       <h4><%= product.name %></h4>
@@ -17,7 +17,7 @@
       $<%= product.price %>
     </td>
     <td>
-   
+
     <%= button_to "Remove Product", remove_product_cart_path, method: :delete, params: { product_id: product_id }, class: "btn btn-danger" %>
 
       <%= link_to remove_item_cart_path(product_id: product_id), class: 'btn btn-xs btn-danger', data: { "turbo-method": :delete } do %>
