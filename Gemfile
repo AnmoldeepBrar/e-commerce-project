@@ -103,3 +103,5 @@ gem "stripe", "~> 10.14"
 gem "rubocop", "~> 1.63"
 
 gem "rubocop-rails", "~> 2.24"
+
+gem "bootstrap", "~> 5.3"
