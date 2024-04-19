@@ -1,5 +1,5 @@
 <h1>Detail of the product<h1>
-<h2><%= @product.name %></h2>
-<%= image_tag(@product.image.url, class: "product-image") if @product.image.present? %>
+<p><%= @product.name %></p>
+<%= image_tag(@product.image.url,alt: product.name, class: "product-image") if @product.image.present? %>
 <p>Description: <%= @product.description %></p>
 <p><%= @product.price %></p>
