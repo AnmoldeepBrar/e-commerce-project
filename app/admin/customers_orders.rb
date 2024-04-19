@@ -13,7 +13,7 @@ ActiveAdmin.register_page "Customer Orders" do
             column "Email" do |order|
               order.customer.email
             end
-            # Order ID
+            
             column "Order ID", :id
             # Products and Quantity
             column "Products" do |order|
