@@ -22,7 +22,7 @@ ActiveAdmin.register_page "Customer Orders" do
             column "Quantity" do |order|
               order.order_items.map { |item| item.quantity }.join(", ")
             end
-            # Address and Province
+            
             column "Address" do |order|
               order.customer.address
             end
