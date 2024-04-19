@@ -1,11 +1,3 @@
-# Rails.application.routes.draw do
-  #devise_for :customers
-#   devise_for :admin_users, ActiveAdmin::Devise.config
-#   ActiveAdmin.routes(self)
-#   get 'admins/login', to: 'admins#login_form', as: 'login_admins'
-#   post 'admins/login', to: 'admins#login'
-#   resources :admins, only: [:new, :create]
-# end
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
