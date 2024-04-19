@@ -51,7 +51,6 @@ class OrdersController < ApplicationController
 
   def create_order()
     order = Order.new(customer_id: current_user&.id, total_amount: cart_total, payment_method: :online_payment, status: :created)
-    #order = Order.new(customer_id: current_user&.id, total_amount: cart_total, payment_method: 0, status: 0)
     cart.each do |product_id, details|
       if product = Product.find_by(id: product_id)
         quantity = details['quantity'].to_i
